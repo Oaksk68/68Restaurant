@@ -1,0 +1,17 @@
+{
+  "reports": "Reports",
+  "monthlyReport": "Monthly Report",
+  "dailyReport": "Daily Report",
+  "totalRevenue": "Total Revenue",
+  "totalOrders": "Total Orders",
+  "topItems": "Top Selling Items",
+  "revenue": "Revenue",
+  "orderCount": "Orders",
+  "selectMonth": "Select Month",
+  "selectDate": "Select Date",
+  "noReportData": "No data available for this period",
+  "dailyBreakdown": "Daily Breakdown",
+  "itemName": "Item",
+  "quantitySold": "Qty Sold",
+  "itemRevenue": "Revenue"
+}

@@ -1,0 +1,17 @@
+{
+  "reports": "အစီရင်ခံစာ",
+  "monthlyReport": "လစဉ် အစီရင်ခံစာ",
+  "dailyReport": "နေ့စဉ် အစီရင်ခံစာ",
+  "totalRevenue": "စုစုပေါင်း ဝင်ငွေ",
+  "totalOrders": "စုစုပေါင်း မှာကြားချက်",
+  "topItems": "အရောင်းရဆုံး ပစ္စည်းများ",
+  "revenue": "ဝင်ငွေ",
+  "orderCount": "မှာကြားချက်",
+  "selectMonth": "လ ရွေးချယ်ရန်",
+  "selectDate": "ရက်စွဲ ရွေးချယ်ရန်",
+  "noReportData": "ဤကာလအတွက် ဒေတာ မရှိပါ",
+  "dailyBreakdown": "နေ့စဉ် အသေးစိတ်",
+  "itemName": "ပစ္စည်း",
+  "quantitySold": "ရောင်းချသောအရေအတွက်",
+  "itemRevenue": "ဝင်ငွေ"
+}
