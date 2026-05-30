@@ -1,5 +1,15 @@
 # React + TypeScript + Vite
 
+## Local setup
+
+Use Node 22.13.0 or newer for this project. If you use `nvm`, run:
+
+```bash
+nvm install
+nvm use
+npm install
+```
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
