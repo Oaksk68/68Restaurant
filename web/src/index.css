@@ -126,6 +126,10 @@ body {
   margin: 0;
 }
 
+h1,h2,h3,h4,h5,p,span,div{
+  line-height: 1.5;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: oklch(0.97 0.003 240); }

@@ -252,11 +252,11 @@ export default function MenuManagementPage() {
               return (
                 <Card
                   key={item.id}
-                  className="glass p-4 border border-border rounded-2xl flex gap-4 hover:border-border/80 transition-all justify-between bg-card text-foreground"
+                  className="flex flex-row justify-between glass p-4 border border-border rounded-2xl gap-4 hover:border-border/80 transition-all bg-card text-foreground"
                 >
                   <div className="flex gap-4 min-w-0">
                     {/* Image */}
-                    <div className="w-16 h-16 rounded-xl bg-background border border-border flex-shrink-0 overflow-hidden flex items-center justify-center relative">
+                    <div className="w-16 h-16 rounded-xl bg-background border border-border shrink-0 overflow-hidden flex items-center justify-center relative">
                       {item.image_path ? (
                         <img src={`/storage/${item.image_path}`} alt={name} className="w-full h-full object-cover" />
                       ) : (
@@ -445,7 +445,7 @@ export default function MenuManagementPage() {
               </DialogTitle>
             </DialogHeader>
 
-            <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
+            <div className="space-y-3 max-h-[60vh] overflow-y-auto px-1">
               <div>
                 <Label className="block text-[10px] font-semibold text-muted-foreground mb-1">{t('menu:category')}</Label>
                 <Select value={String(itemModal.categoryId)} onValueChange={(val) => setItemModal({ ...itemModal, categoryId: Number(val) })}>

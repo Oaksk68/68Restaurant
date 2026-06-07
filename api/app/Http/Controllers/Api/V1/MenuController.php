@@ -21,7 +21,7 @@ class MenuController extends Controller
 
     public function indexItems()
     {
-        $items = MenuItem::with('category')->orderBy('category_id')->get();
+        $items = MenuItem::with('category')->orderBy('category_id')->orderBy('name_en')->get();
 
         return response()->json(['data' => $items]);
     }

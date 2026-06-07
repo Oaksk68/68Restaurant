@@ -27,7 +27,7 @@ class MenuItemSeeder extends Seeder
                 'name_en' => 'Soup of the Day',
                 'name_my' => 'နေ့စဉ် ဟင်းရည်',
                 'description_en' => "Chef's special soup",
-                'description_my' => 'မန်နူးမှ အထူးဟင်းရည်',
+                'description_my' => 'စားဖိုမှူး၏ အထူးဟင်းရည်',
                 'price' => 2500,
             ],
             // Main Course
