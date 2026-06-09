@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useAuthStore } from '../stores/useAuthStore'
 
 const api = axios.create({
-  baseURL: 'https://68restaurant-production.up.railway.app/api/v1',
+  baseURL: import.meta.env.VITE_API_URL || 'https://68restaurant-production.up.railway.app/api/v1/',
   withCredentials: false,
   headers: {
     'Content-Type': 'application/json',
@@ -36,6 +36,5 @@ api.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
 
 export default api
