@@ -1,0 +1,5 @@
+[phases.setup]
+nixPkgs = ["php84", "php84Extensions.pdo", "php84Extensions.pdo_pgsql", "php84Extensions.mbstring", "php84Extensions.xml", "php84Extensions.tokenizer", "php84Extensions.curl", "php84Extensions.zip", "php84Extensions.bcmath", "composer"]
+
+[start]
+cmd = "chmod +x start.sh && ./start.sh"
