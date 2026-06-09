@@ -7,7 +7,8 @@ RUN apk add --no-cache \
     curl \
     zip \
     unzip \
-    git
+    git \
+    oniguruma-dev
 
 # Install PHP extensions including pcntl
 RUN docker-php-ext-install \
