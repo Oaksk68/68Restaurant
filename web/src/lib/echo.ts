@@ -12,11 +12,15 @@ window.Pusher = Pusher
 
 const scheme = import.meta.env.VITE_REVERB_SCHEME ?? 'http'
 const port = Number(import.meta.env.VITE_REVERB_PORT ?? 8080)
+const reverbHost = import.meta.env.VITE_REVERB_HOST
+const wsHost = (reverbHost === 'localhost' || reverbHost === '127.0.0.1' || !reverbHost)
+  ? window.location.hostname
+  : reverbHost
 
 const echo = new Echo({
   broadcaster: 'reverb',
   key: import.meta.env.VITE_REVERB_APP_KEY ?? 'restaurant-key',
-  wsHost: import.meta.env.VITE_REVERB_HOST ?? 'localhost',
+  wsHost,
   wsPort: port,
   wssPort: port,
   forceTLS: scheme === 'https',

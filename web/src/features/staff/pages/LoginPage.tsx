@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../../stores/useAuthStore'
 import LanguageSwitcher from '../../../components/LanguageSwitcher'
 import api from '../../../lib/axios'
@@ -14,16 +14,14 @@ import { Card, CardContent } from '@/components/ui/card'
 export default function LoginPage() {
   const { t } = useTranslation('common')
   const navigate = useNavigate()
-  const { setUser, setToken, isAuthenticated } = useAuthStore()
+  const { user, setUser, setToken, isAuthenticated } = useAuthStore()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // Redirect if already logged in
-  if (isAuthenticated) {
-    navigate('/staff/orders', { replace: true })
-    return null
+  if (isAuthenticated && user) {
+    return <Navigate to={user.role === 'chef' ? '/staff/orders' : '/staff/tables'} replace />
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -147,4 +145,3 @@ export default function LoginPage() {
     </div>
   )
 }
-

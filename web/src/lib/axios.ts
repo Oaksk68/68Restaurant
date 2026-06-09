@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api/v1',
+  baseURL: `http://${window.location.hostname}:8000/api/v1`,
   withCredentials: false,
   headers: {
     'Content-Type': 'application/json',
@@ -11,12 +11,12 @@ const api = axios.create({
 })
 
 // Attach Bearer token from localStorage on every request
-api.interceptors.request.use((config) => {
+api.interceptors.request.use((response) => {
   const token = localStorage.getItem('sanctum_token')
   if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`
+    response.headers['Authorization'] = `Bearer ${token}`
   }
-  return config
+  return response
 })
 
 export default api
