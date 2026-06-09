@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { useAuthStore } from '../stores/useAuthStore'
 
 const api = axios.create({
-  baseURL: `http://${window.location.hostname}:8000/api/v1`,
+  baseURL: 'https://68restaurant-production.up.railway.app/api/v1',
   withCredentials: false,
   headers: {
     'Content-Type': 'application/json',
@@ -11,12 +12,30 @@ const api = axios.create({
 })
 
 // Attach Bearer token from localStorage on every request
-api.interceptors.request.use((response) => {
+api.interceptors.request.use((config) => {
   const token = localStorage.getItem('sanctum_token')
   if (token) {
-    response.headers['Authorization'] = `Bearer ${token}`
+    config.headers['Authorization'] = `Bearer ${token}`
   }
-  return response
+  return config
 })
+
+// Handle 401 Unauthorized globally
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      // Clear all auth data
+      useAuthStore.getState().logout()
+
+      // Redirect to login page
+      if (window.location.pathname !== '/staff/login') {
+        window.location.href = '/staff/login'
+      }
+    }
+    return Promise.reject(error)
+  }
+)
+
 
 export default api

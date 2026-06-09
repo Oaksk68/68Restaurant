@@ -16,11 +16,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://68restaurant-production.up.railway.app',
         changeOrigin: true,
       },
       '/sanctum': {
-        target: 'http://localhost:8000',
+        target: 'http://68restaurant-production.up.railway.app',
         changeOrigin: true,
       },
     },

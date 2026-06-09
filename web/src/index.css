@@ -43,7 +43,7 @@
   --color-surface-400: oklch(0.45 0.008 240);
   --color-surface-300: oklch(0.60 0.005 240);
 
-  --font-sans: 'TharLon', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'MyanmarSagar', 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
@@ -132,7 +132,7 @@
 }
 
 html {
-  font-family: 'TharLon', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'MyanmarSagar', 'Inter', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

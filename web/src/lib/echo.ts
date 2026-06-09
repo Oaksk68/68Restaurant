@@ -25,6 +25,7 @@ const echo = new Echo({
   wssPort: port,
   forceTLS: scheme === 'https',
   enabledTransports: ['ws', 'wss'],
+  disableStats: true,
 })
 
 export default echo
