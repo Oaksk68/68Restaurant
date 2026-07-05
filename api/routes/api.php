@@ -14,6 +14,8 @@ use App\Http\Controllers\Api\V1\UserController;
 // ─── Auth ───────────────────────────────────────────────────────────────────
 Route::post('/v1/auth/login', [AuthController::class, 'login']);
 
+Route::get('/v1/test', fn () => response()->json(['status' => 'ok']));
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/v1/auth/logout', [AuthController::class, 'logout']);
     Route::get('/v1/auth/me', [AuthController::class, 'me']);
