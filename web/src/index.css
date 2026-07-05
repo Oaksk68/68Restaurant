@@ -169,7 +169,7 @@ a, button { transition: all 0.15s ease; }
 
 /* Glow effect */
 .glow-brand {
-  box-shadow: 0 0 20px oklch(0.5797 0.1646 29.66 / 0.3);
+  box-shadow: 0 0 20px oklch(1 0.1646 29.66 / 0.3);
 }
 
 /* Custom animations */

@@ -34,5 +34,8 @@
   "uploadQR": "Upload QR Code Image",
   "addStaff": "Add Staff Member",
   "editStaff": "Edit Staff Member",
-  "staffList": "Staff List"
+  "staffList": "Staff List",
+  "seats": "Seats",
+  "items": "Items",
+  "openOrder": "Open Order"
 }

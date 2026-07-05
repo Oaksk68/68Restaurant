@@ -44,13 +44,6 @@ export default function MenuPage() {
   const [cartOpen, setCartOpen] = useState(false)
   const [itemNoteModal, setItemNoteModal] = useState<{ id: number; note: string } | null>(null)
 
-  // Set default category when categories load
-  useEffect(() => {
-    if (categories && categories.length > 0 && selectedCategory === null) {
-      setSelectedCategory(categories[0].id)
-    }
-  }, [categories, selectedCategory])
-
   const isLoading = tableLoading || menuLoading
   const hasError = tableError || menuError
 
@@ -79,11 +72,13 @@ export default function MenuPage() {
   }
 
   // Filter items
+  const allItems = categories?.flatMap(c => c.menu_items || []) || []
   const activeCategoryData = categories?.find(c => c.id === selectedCategory)
-  const filteredItems = activeCategoryData?.menu_items?.filter(item => {
+  const itemsInScope = selectedCategory === null ? allItems : (activeCategoryData?.menu_items || [])
+  const filteredItems = itemsInScope.filter(item => {
     const name = i18n.language === 'my' ? item.name_my : item.name_en
     return name.toLowerCase().includes(searchQuery.toLowerCase())
-  }) || []
+  })
 
   // Handle placing order
   const handlePlaceOrder = async () => {
@@ -151,6 +146,20 @@ export default function MenuPage() {
 
       {/* Categories Horizontal Tabs */}
       <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-none -mx-4 px-4 sticky top-14 bg-background/95 backdrop-blur-md z-10">
+        <Button
+          variant="outline"
+          onClick={() => {
+            setSelectedCategory(null)
+            setSearchQuery('')
+          }}
+          className={`shrink-0 px-4 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            selectedCategory === null
+              ? 'bg-primary/20 text-primary border-primary/40 glow-brand hover:bg-primary/20 hover:text-primary'
+              : 'bg-card text-muted-foreground border-border hover:bg-muted hover:text-foreground'
+          }`}
+        >
+          {t('menu:allItems')}
+        </Button>
         {categories?.map((cat) => {
           const isSelected = selectedCategory === cat.id
           const catName = i18n.language === 'my' ? cat.name_my : cat.name_en
@@ -162,7 +171,7 @@ export default function MenuPage() {
                 setSelectedCategory(cat.id)
                 setSearchQuery('')
               }}
-              className={`flex-shrink-0 px-4 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`shrink-0 px-4 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 isSelected
                   ? 'bg-primary/20 text-primary border-primary/40 glow-brand hover:bg-primary/20 hover:text-primary'
                   : 'bg-card text-muted-foreground border-border hover:bg-muted hover:text-foreground'
@@ -323,8 +332,9 @@ export default function MenuPage() {
                   <div className="flex items-center justify-between gap-4 pt-1">
                     {/* Note add/edit */}
                     <button
+                      type="button"
                       onClick={() => setItemNoteModal({ id: item.menuItemId, note: item.note || '' })}
-                      className="text-[11px] text-muted-foreground hover:text-primary underline truncate max-w-[180px] text-left"
+                      className="text-[11px] text-muted-foreground hover:text-primary underline truncate max-w-45 text-left"
                     >
                       {item.note ? `${t('common:note')}: ${item.note}` : `+ ${t('order:addNote')}`}
                     </button>
